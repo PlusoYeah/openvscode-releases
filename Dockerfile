@@ -6,7 +6,7 @@ RUN apt update && \
 
 WORKDIR /home/
 
-ARG RELEASE_TAG
+ARG RELEASE_TAG="openvscode-server-v1.64.2"
 ARG RELEASE_ORG="gitpod-io"
 ARG OPENVSCODE_SERVER_ROOT="/home/.openvscode-server"
 
@@ -61,4 +61,4 @@ ENV LANG=C.UTF-8 \
 # Default exposed port if none is specified
 EXPOSE 3000
 
-ENTRYPOINT [ "/bin/sh", "-c", "exec ${OPENVSCODE_SERVER_ROOT}/bin/openvscode-server --host 0.0.0.0 --without-connection-token \"${@}\"", "--" ]
+ENTRYPOINT [ "/bin/sh", "-c", "exec ${OPENVSCODE_SERVER_ROOT}/bin/openvscode-server --host 0.0.0.0 \"${@}\"", "--" ]
